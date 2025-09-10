@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+</head>
+<body>
+    <!-- login/callback -> naver, 컨트롤러에서는 /{provider} -->
+    <a href="https://nid.naver.com/oauth2.0/authorize?client_id=1qDu4kPdBqi8w9BYsgKV&redirect_uri=http://localhost:8080/naver&response_type=code&state=DSF223@asDSADA!">
+        <img src="naver_login_btn.png">
+    </a>
+
+    <!-- https://kauth.kakao.com/oauth/authorize
+        client_id : String
+        redirect_uri : String
+        response_type : String
+    -->
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=f152c5f5fd6cf53bc8a821b474a2accf&redirect_uri=http://localhost:8080/kakao&response_type=code&scope=openid">
+        <img src="/kakao_login_btn.png" alt="카카오 로그인 버튼">
+    </a>
+
+    <!--
+        <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=562023236603-iciluvmicfusqagbt0kmf4lffvgavhsl.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Flocalhost%3A8080%2Fauth%2Flogin%2Fgoogle&response_type=code&scope=openid">Login with Google</a>
+    -->
+</body>
+</html>
