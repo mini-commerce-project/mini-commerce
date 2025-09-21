@@ -10,7 +10,7 @@ import org.springframework.web.client.RestClient;
 
 import com.example.minicommerce.global.ProviderType;
 
-@Component("naver")
+@Component
 public class NaverOauthClient implements OauthClient {
 
     RestClient restClient = RestClient.create();
