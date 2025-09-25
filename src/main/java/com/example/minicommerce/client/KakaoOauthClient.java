@@ -8,7 +8,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClient;
 
-import com.example.minicommerce.OauthLoginResponseDto;
+import com.example.minicommerce.global.GetOauthTokenResponseDto;
 import com.example.minicommerce.global.ProviderType;
 
 @Component
@@ -41,7 +41,7 @@ public class KakaoOauthClient implements OauthClient {
      * code
      */
     @Override
-    public OauthLoginResponseDto login(String code, String state) {
+    public GetOauthTokenResponseDto getToken(String code, String state) {
         MultiValueMap<String, String> form = new LinkedMultiValueMap<>();
         form.add("grant_type", "authorization_code");
         form.add("client_id", kakaoClientId);
@@ -49,13 +49,11 @@ public class KakaoOauthClient implements OauthClient {
         form.add("code", code);
         form.add("redirect_uri", kakaoRedirectUri);
 
-        OauthLoginResponseDto body = restClient.post()
+        return restClient.post()
             .uri(kakaoTokenUri)
             .contentType(APPLICATION_FORM_URLENCODED)
             .body(form)
             .retrieve()
-            .body(OauthLoginResponseDto.class);
-
-        return body;
+            .body(GetOauthTokenResponseDto.class);
     }
 }

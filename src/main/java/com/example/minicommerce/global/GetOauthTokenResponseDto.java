@@ -1,10 +1,10 @@
-package com.example.minicommerce;
+package com.example.minicommerce.global;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class OauthLoginResponseDto {
+public class GetOauthTokenResponseDto {
 
     @JsonProperty("access_token")
     private String accessToken;
@@ -24,7 +24,7 @@ public class OauthLoginResponseDto {
     @JsonProperty("refresh_token_expires_in")
     private Integer refreshTokenExpiresIn;
 
-    public OauthLoginResponseDto() {
+    public GetOauthTokenResponseDto() {
     }
 
     public String getAccessToken() {
