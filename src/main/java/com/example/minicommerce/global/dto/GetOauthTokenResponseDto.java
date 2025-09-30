@@ -1,4 +1,4 @@
-package com.example.minicommerce.global;
+package com.example.minicommerce.global.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

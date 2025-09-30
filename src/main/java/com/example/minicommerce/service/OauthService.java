@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.example.minicommerce.global.GetOauthTokenResponseDto;
+import com.example.minicommerce.global.dto.GetOauthTokenResponseDto;
 import com.example.minicommerce.global.ProviderType;
 import com.example.minicommerce.client.OauthClient;
 

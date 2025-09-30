@@ -8,7 +8,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClient;
 
-import com.example.minicommerce.global.GetOauthTokenResponseDto;
+import com.example.minicommerce.global.dto.GetOauthTokenResponseDto;
 import com.example.minicommerce.global.ProviderType;
 
 @Component
