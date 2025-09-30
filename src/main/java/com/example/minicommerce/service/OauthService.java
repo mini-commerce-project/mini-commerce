@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.example.minicommerce.global.dto.GetOauthTokenResponseDto;
 import com.example.minicommerce.global.ProviderType;
 import com.example.minicommerce.client.OauthClient;
 
@@ -21,8 +22,8 @@ public class OauthService {
         }
     }
 
-    public String oauthLogin(String provider, String code, String state) {
+    public GetOauthTokenResponseDto getOauthToken(String provider, String code, String state) {
         OauthClient oauthClient = clients.get(ProviderType.valueOf(provider.toUpperCase()));
-        return oauthClient.login(code, state);
+        return oauthClient.getToken(code, state);
     }
 }

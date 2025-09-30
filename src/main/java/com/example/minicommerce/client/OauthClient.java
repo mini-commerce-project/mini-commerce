@@ -1,8 +1,9 @@
 package com.example.minicommerce.client;
 
+import com.example.minicommerce.global.dto.GetOauthTokenResponseDto;
 import com.example.minicommerce.global.ProviderType;
 
 public interface OauthClient {
     ProviderType provider();
-    String login(String code, String state);
+    GetOauthTokenResponseDto getToken(String code, String state);
 }
