@@ -14,7 +14,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query(
         value = "SELECT * " +
             "FROM product p " +
-            "WHERE REPLACE(p.name, ' ', '') = REPLACE(:name, ' ', '')",
+            "WHERE MATCH(p.name) AGAINST(:name)",
         nativeQuery = true
     )
     Optional<Product> findByName(String name);
