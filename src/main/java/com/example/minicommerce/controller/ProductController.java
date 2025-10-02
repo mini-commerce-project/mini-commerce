@@ -1,5 +1,7 @@
 package com.example.minicommerce.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +18,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/api/products")
-    public GetProductResponse getProduct(
+    public List<GetProductResponse> getProduct(
         @RequestParam String name
     ) {
         return productService.getProduct(name);

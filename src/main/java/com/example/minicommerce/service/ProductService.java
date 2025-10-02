@@ -1,5 +1,8 @@
 package com.example.minicommerce.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.minicommerce.entity.Product;
@@ -15,12 +18,16 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public GetProductResponse getProduct(String name) {
+    public List<GetProductResponse> getProduct(String name) {
         String analyzeName = KoreanAnalyzer.analyze(name);
 
-        Product product = productRepository.findByName(analyzeName)
-            .orElseThrow(() -> new RuntimeException("상품이 존재하지 않습니다."));
+        List<Product> product = productRepository.findByName(analyzeName);
 
-        return GetProductResponse.of(product);
+        List<GetProductResponse> response = new ArrayList<>();
+        for (Product p : product) {
+            response.add(GetProductResponse.of(p));
+        }
+
+        return response;
     }
 }
