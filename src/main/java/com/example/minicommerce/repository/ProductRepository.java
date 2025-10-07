@@ -1,5 +1,6 @@
 package com.example.minicommerce.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,8 +15,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query(
         value = "SELECT * " +
             "FROM product p " +
-            "WHERE REPLACE(p.name, ' ', '') = REPLACE(:name, ' ', '')",
+            "WHERE MATCH(p.name) AGAINST(:name)",
         nativeQuery = true
     )
-    Optional<Product> findByName(String name);
+    List<Product> findByName(String name);
 }

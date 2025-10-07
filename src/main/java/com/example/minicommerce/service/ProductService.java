@@ -1,9 +1,13 @@
 package com.example.minicommerce.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.minicommerce.entity.Product;
 import com.example.minicommerce.global.dto.GetProductResponse;
+import com.example.minicommerce.global.util.KoreanAnalyzer;
 import com.example.minicommerce.repository.ProductRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -14,10 +18,16 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public GetProductResponse getProduct(String name) {
-        Product product = productRepository.findByName(name)
-            .orElseThrow(() -> new RuntimeException("상품이 존재하지 않습니다."));
+    public List<GetProductResponse> getProduct(String name) {
+        String analyzeName = KoreanAnalyzer.analyze(name);
 
-        return GetProductResponse.of(product);
+        List<Product> product = productRepository.findByName(analyzeName);
+
+        List<GetProductResponse> response = new ArrayList<>();
+        for (Product p : product) {
+            response.add(GetProductResponse.of(p));
+        }
+
+        return response;
     }
 }
