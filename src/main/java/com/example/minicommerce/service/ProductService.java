@@ -1,6 +1,5 @@
 package com.example.minicommerce.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -23,11 +22,6 @@ public class ProductService {
 
         List<Product> product = productRepository.findByName(analyzeName);
 
-        List<GetProductResponse> response = new ArrayList<>();
-        for (Product p : product) {
-            response.add(GetProductResponse.of(p));
-        }
-
-        return response;
+        return product.stream().map(GetProductResponse::of).toList();
     }
 }
