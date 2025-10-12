@@ -19,8 +19,9 @@ public class ProductController {
 
     @GetMapping("/api/products")
     public List<GetProductResponse> getProduct(
-        @RequestParam String name
+        @RequestParam(required = false) String name,
+        @RequestParam(required = false) String category
     ) {
-        return productService.getProduct(name);
+        return productService.getProduct(name, category);
     }
 }

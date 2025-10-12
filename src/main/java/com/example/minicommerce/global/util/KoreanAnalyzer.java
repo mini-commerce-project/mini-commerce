@@ -9,6 +9,8 @@ import scala.collection.Seq;
 @Component
 public class KoreanAnalyzer {
     public static String analyze(String text) {
+        if (text == null) return null;
+
         CharSequence normalized = OpenKoreanTextProcessorJava.normalize(text);
 
         Seq<KoreanTokenizer.KoreanToken> tokens =
