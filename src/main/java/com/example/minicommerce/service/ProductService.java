@@ -17,10 +17,10 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public List<GetProductResponse> getProduct(String name) {
+    public List<GetProductResponse> getProduct(String name, String category) {
         String analyzeName = KoreanAnalyzer.analyze(name);
 
-        List<Product> product = productRepository.findByName(analyzeName);
+        List<Product> product = productRepository.findByName(analyzeName, category);
 
         return product.stream().map(GetProductResponse::of).toList();
     }

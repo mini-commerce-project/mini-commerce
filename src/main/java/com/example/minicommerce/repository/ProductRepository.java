@@ -14,8 +14,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query(
         value = "SELECT * " +
             "FROM product p " +
-            "WHERE MATCH(p.name) AGAINST(:name)",
+            "WHERE (:name IS NULL OR MATCH(p.name) AGAINST(:name IN BOOLEAN MODE)) " +
+            "AND (:category IS NULL OR p.category_type = :category) " +
+            "ORDER BY p.id DESC",
         nativeQuery = true
     )
-    List<Product> findByName(String name);
+    List<Product> findByName(String name, String category);
 }
